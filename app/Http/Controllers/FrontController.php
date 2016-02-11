@@ -21,7 +21,7 @@ class FrontController extends Controller
 
     public function contacto()
     {
-        return view('contacto');
+        return view('contact');
     }
 
     public function reviews()
@@ -29,4 +29,8 @@ class FrontController extends Controller
        return view('reviews'); 
     }
 
+        public function admin()
+    {
+       return view('admin.index'); 
+    }
 }
