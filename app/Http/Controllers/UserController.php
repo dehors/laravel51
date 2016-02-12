@@ -1,7 +1,9 @@
 <?php
 
 namespace laravel51\Http\Controllers;
-
+use Validator;
+use DB;
+use Crypt;
 use Illuminate\Http\Request;
 
 use laravel51\Http\Requests;
@@ -37,7 +39,30 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+       $validator = Validator::make($request->all(), [
+            'name' => 'required|unique:users|max:20',
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+
+            return redirect('user/create')->withErrors($validator)->withInput();
+        }
+        else
+        {
+
+        DB::table('users')->insert(
+         ['name' => $request->input('name'), 
+          'email' => $request->input('email'), 
+          'password' => Crypt::encrypt($request->input('password')) ]
+        );
+
+        return redirect('user')->with('success', true);
+
+        }
+
     }
 
     /**
