@@ -18,7 +18,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = DB::table('users')->select('name', 'email', 'password')->get();
+        return view('user.index')->with('users',$users);
+      
     }
 
     /**
@@ -59,7 +61,7 @@ class UserController extends Controller
           'password' => Crypt::encrypt($request->input('password')) ]
         );
 
-        return redirect('user')->with('success', true);
+        return redirect('user')->with('message', 'store');
 
         }
 
