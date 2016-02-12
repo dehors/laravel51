@@ -4,6 +4,9 @@ namespace laravel51\Http\Controllers;
 use Validator;
 use DB;
 use Crypt;
+use laravel51\User;
+use Session;
+use Redirect;
 use Illuminate\Http\Request;
 
 use laravel51\Http\Requests;
@@ -18,7 +21,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = DB::table('users')->select('name', 'email', 'password')->get();
+        /*$users = User::all();*/
+
+        $users = DB::table('users')->select('id','name', 'email', 'password')->get();
         return view('user.index')->with('users',$users);
       
     }
@@ -55,6 +60,12 @@ class UserController extends Controller
         else
         {
 
+         /*User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => $request['password'],
+         ]);*/
+
         DB::table('users')->insert(
          ['name' => $request->input('name'), 
           'email' => $request->input('email'), 
@@ -86,7 +97,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('user.edit')->with('user',$user);
     }
 
     /**
@@ -98,7 +110,11 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->fill($request->all());
+        $user->save();
+        Session::flash('message','update');
+        return Redirect::to('/user');
     }
 
     /**
