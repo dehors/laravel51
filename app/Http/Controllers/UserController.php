@@ -8,6 +8,8 @@ use laravel51\User;
 use Session;
 use Redirect;
 use Illuminate\Http\Request;
+use laravel51\Http\Requests\UserCreateRequest;
+use laravel51\Http\Requests\UserUpdateRequest;
 
 use laravel51\Http\Requests;
 use laravel51\Http\Controllers\Controller;
@@ -108,7 +110,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserUpdateRequest $request, $id)
     {
         $user = User::find($id);
         $user->fill($request->all());
