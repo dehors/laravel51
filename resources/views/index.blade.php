@@ -6,13 +6,8 @@
 @section('content')
 	<!-- header-section-starts -->
 	<div class="full">
-			<div class="menu">
-				<ul>
-					<li><a class="active" href="index.html"><i class="home"></i></a></li>
-					<li><a href="reviews.html"><div class="cat"><i class="watching"></i><i class="watching1"></i></div></a></li>
-					<li><a href="contact.html"><div class="cnt"><i class="contact"></i><i class="contact1"></i></div></a></li>
-				</ul>
-			</div>
+		@section('sidebar')
+        @parent
 		<div class="main">
 		<div class="header">
 			<div class="top-header">

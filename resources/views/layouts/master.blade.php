@@ -16,7 +16,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     </head>
     <body>
-        
+        @section('sidebar')
+           	<div class="menu">
+				<ul>
+					<li><a class="" href="{!!URL::to('/')!!}"><i class="home"></i></a></li>
+					<li><a class="" href="{!!URL::to('reviews')!!}"><div class="cat"><i class="watching"></i><i class="watching1"></i></div></a></li>
+					<li><a class="" href="{!!URL::to('contacto')!!}"><div class="cnt"><i class="contact"></i><i class="contact1"></i></div></a></li>
+					<li><a class="" href="{!!URL::to('admin')!!}"><div class="cnt"><i class="contact"></i><i class="contact1"></i></div></a></li>
+				</ul>
+			</div>
+        @show
          @yield('content')
        
     </body>

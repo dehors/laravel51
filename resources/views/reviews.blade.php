@@ -6,13 +6,8 @@
 
 	<!-- header-section-starts -->
 	<div class="full">
-			<div class="menu">
-				<ul>
-					<li><a href="index.html"><div class="hm"><i class="home1"></i><i class="home2"></i></div></a></li>
-					<li><a class="active" href="reviews.html"><div class="cat"><i class="watching"></i><i class="watching1"></i></div></a></li>
-					<li><a href="contact.html"><div class="cnt"><i class="contact"></i><i class="contact1"></i></div></a></li>
-				</ul>
-			</div>
+		@section('sidebar')
+        @parent
 		<div class="main">
 		<div class="review-content">
 			<div class="top-header span_top">
