@@ -13,9 +13,17 @@ use laravel51\Http\Requests\UserUpdateRequest;
 
 use laravel51\Http\Requests;
 use laravel51\Http\Controllers\Controller;
+use Illuminate\Routing\Route;
 
 class UserController extends Controller
 {
+    public function __construct(){
+        $this->beforeFilter('@find',['only' => ['edit','update','destroy']]);
+    }
+
+    public function find(Route $route){
+        $this->user = User::find($route->getParameter('user'));
+    }
     /**
      * Display a listing of the resource.
      *
@@ -99,8 +107,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-        return view('user.edit')->with('user',$user);
+        return view('user.edit')->with('user',$this->user);
     }
 
     /**
@@ -112,9 +119,9 @@ class UserController extends Controller
      */
     public function update(UserUpdateRequest $request, $id)
     {
-        $user = User::find($id);
-        $user->fill($request->all());
-        $user->save();
+       
+        $this->user->fill($request->all());
+        $this->user->save();
         Session::flash('message','update');
         return Redirect::to('/user');
     }
@@ -127,8 +134,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user =  User::find($id);
-        $user->delete();     
+        
+        $this->user->delete();     
         return Redirect::to('/user')->with('message','delete');       
     }
 }
