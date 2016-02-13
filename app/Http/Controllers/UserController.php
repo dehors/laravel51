@@ -24,7 +24,7 @@ class UserController extends Controller
     public function index()
     {
         /*$users = User::all();*/
-
+        /*$user = User::onlyTrashed($id); solo los eliminados*/
         $users = DB::table('users')->select('id','name', 'email', 'password')->paginate(3);
         return view('user.index')->with('users',$users);
       
@@ -127,7 +127,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        User::destroy($id);      
+        $user =  User::find($id);
+        $user->delete();     
         return Redirect::to('/user')->with('message','delete');       
     }
 }
