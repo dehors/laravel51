@@ -35,9 +35,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        /*$users = User::all();*/
+        $users = User::paginate(3);
         /*$user = User::onlyTrashed($id); solo los eliminados*/
-        $users = DB::table('users')->select('id','name', 'email', 'password','created_at')->paginate(3);
+        /*$users = DB::table('users')->select('id','name', 'email', 'password','created_at')->paginate(3);*/
         return view('user.index')->with('users',$users);
       
     }
