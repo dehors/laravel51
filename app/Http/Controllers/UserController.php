@@ -25,7 +25,7 @@ class UserController extends Controller
     {
         /*$users = User::all();*/
 
-        $users = DB::table('users')->select('id','name', 'email', 'password')->get();
+        $users = DB::table('users')->select('id','name', 'email', 'password')->paginate(3);
         return view('user.index')->with('users',$users);
       
     }
