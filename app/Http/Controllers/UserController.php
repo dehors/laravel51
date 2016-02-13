@@ -86,7 +86,7 @@ class UserController extends Controller
         $user->password =  bcrypt($request->input('password'));
         $user->save();
 
-        return redirect('user')->with('message', 'store');
+        return redirect('user')->with('message-success', 'El usuario se ha creado');
 
         }
 
@@ -126,7 +126,7 @@ class UserController extends Controller
        
         $this->user->fill($request->all());
         $this->user->save();
-        Session::flash('message','update');
+        Session::flash('message-warning','El usuario se ha actualizado');
         return Redirect::to('/user');
     }
 
@@ -140,6 +140,6 @@ class UserController extends Controller
     {
         
         $this->user->delete();     
-        return Redirect::to('/user')->with('message','delete');       
+        return Redirect::to('/user')->with('message-error','El usuario se ha eliminado');       
     }
 }
