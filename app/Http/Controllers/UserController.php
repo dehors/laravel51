@@ -19,6 +19,8 @@ class UserController extends Controller
 {
     public function __construct(){
         $this->beforeFilter('@find',['only' => ['edit','update','destroy']]);
+        $this->middleware('auth');
+        $this->middleware('admin',['only'=>['create','edit']]);
     }
 
     public function find(Route $route){
