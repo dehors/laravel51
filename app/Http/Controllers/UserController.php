@@ -79,7 +79,7 @@ class UserController extends Controller
         DB::table('users')->insert(
          ['name' => $request->input('name'), 
           'email' => $request->input('email'), 
-          'password' => Crypt::encrypt($request->input('password')) ]
+          'password' => bcrypt($request->input('password')) ]
         );
 
         return redirect('user')->with('message', 'store');
