@@ -7,6 +7,8 @@ use Crypt;
 use laravel51\User;
 use Session;
 use Redirect;
+use Carbon\Carbon;
+
 use Illuminate\Http\Request;
 use laravel51\Http\Requests\UserCreateRequest;
 use laravel51\Http\Requests\UserUpdateRequest;
@@ -35,7 +37,7 @@ class UserController extends Controller
     {
         /*$users = User::all();*/
         /*$user = User::onlyTrashed($id); solo los eliminados*/
-        $users = DB::table('users')->select('id','name', 'email', 'password')->paginate(3);
+        $users = DB::table('users')->select('id','name', 'email', 'password','created_at')->paginate(3);
         return view('user.index')->with('users',$users);
       
     }
@@ -77,12 +79,12 @@ class UserController extends Controller
             'email' => $request['email'],
             'password' => $request['password'],
          ]);*/
-
-        DB::table('users')->insert(
-         ['name' => $request->input('name'), 
-          'email' => $request->input('email'), 
-          'password' => bcrypt($request->input('password')) ]
-        );
+        
+        $user = new User;
+        $user->name =  $request->input('name');
+        $user->email =  $request->input('email');
+        $user->password =  bcrypt($request->input('password'));
+        $user->save();
 
         return redirect('user')->with('message', 'store');
 
