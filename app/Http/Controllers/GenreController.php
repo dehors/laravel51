@@ -3,7 +3,8 @@
 namespace laravel51\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use laravel51\Gender;
+use Validator;
 use laravel51\Http\Requests;
 use laravel51\Http\Controllers\Controller;
 
@@ -41,7 +42,19 @@ class GenreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(),[
+            'genre' => 'required|min:3'
+        ]);
+
+        if ($validator-> fails()) {
+            return response($validator->errors(),422);
+        }
+
+        $gender = new Gender;
+        $gender->genre =  $request->input('genre');       
+        $gender->save();              
+    
+        return response($gender,201);    
     }
 
     /**

@@ -17,7 +17,12 @@ Route::get('reviews','FrontController@reviews');
 Route::get('admin','FrontController@admin');
 
 Route::resource('user', 'UserController');
-Route::resource('genre', 'GenreController');
 
 Route::resource('log', 'LogController');
 Route::resource('logout', 'LogController@logout');
+
+Route::group(['prefix' => 'api'], function()
+{
+    Route::resource('genders', 'GenreController', ['only' => ['index','create','store']]);
+    Route::post('genders', 'GenreController@store');
+});
