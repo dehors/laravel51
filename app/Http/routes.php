@@ -17,7 +17,7 @@ Route::get('reviews','FrontController@reviews');
 Route::get('admin','FrontController@admin');
 
 Route::resource('user', 'UserController');
-
+Route::resource('pelicula','MovieController');
 Route::resource('log', 'LogController');
 Route::resource('logout', 'LogController@logout');
 
