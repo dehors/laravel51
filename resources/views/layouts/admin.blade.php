@@ -13,6 +13,7 @@
     {!!Html::style('css/sb-admin-2.css')!!}
     {!!Html::style('css/font-awesome.min.css')!!}
     
+    
     {!!Html::script('js/jquery.min.js')!!}
     {!!Html::script('js/angular/angular.js')!!}
     {!!Html::script('js/angular/controllers/GenderController.js')!!}
@@ -85,10 +86,10 @@
                             <a href="#"><i class="fa fa-child fa-fw"></i> Genero<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{!!URL::to('api/genders/create')!!}"><i class='fa fa-plus fa-fw'></i> Agregar</a>
+                                    <a href="{!!URL::to('genders/create')!!}"><i class='fa fa-plus fa-fw'></i> Agregar</a>
                                 </li>
                                 <li>
-                                    <a href="{!!URL::to('api/genders')!!}"><i class='fa fa-list-ol fa-fw'></i> Generos</a>
+                                    <a href="{!!URL::to('genders')!!}"><i class='fa fa-list-ol fa-fw'></i> Generos</a>
                                 </li>
                             </ul>
                         </li>
@@ -110,7 +111,7 @@
     {!!Html::script('js/bootstrap.min.js')!!}
     {!!Html::script('js/metisMenu.min.js')!!}
     {!!Html::script('js/sb-admin-2.js')!!}
-
+    {!!Html::script('vendors/ckeditor/ckeditor.js')!!}
 
 </body>
 

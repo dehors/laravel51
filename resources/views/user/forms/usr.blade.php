@@ -13,3 +13,9 @@
 		{!!Form::password('password',['class'=>'form-control','placeholder'=>'Ingresa el Nombre del usuario'])!!}
 		{{$errors->first('password')}}
 	</div>
+	<div class="form-group">
+	 	<textarea  class="ckeditor" name="editor1" id="editor1" rows="10" cols="80">
+            Este es el textarea que es modificado por la clase ckeditor
+        </textarea>
+	</div>                          
+

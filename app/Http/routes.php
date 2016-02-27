@@ -21,8 +21,9 @@ Route::resource('user', 'UserController');
 Route::resource('log', 'LogController');
 Route::resource('logout', 'LogController@logout');
 
+Route::resource('genders', 'GenreController', ['only' => ['index','create']]);
+
 Route::group(['prefix' => 'api'], function()
 {
-    Route::resource('genders', 'GenreController', ['only' => ['index','create','store']]);
-    Route::post('genders', 'GenreController@store');
+    Route::resource('genders', 'GenreController', ['only' => ['store']]);    
 });
