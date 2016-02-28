@@ -20,7 +20,7 @@ Route::resource('user', 'UserController');
 Route::resource('pelicula','MovieController');
 Route::resource('log', 'LogController');
 Route::resource('logout', 'LogController@logout');
-
+Route::resource('mail','MailController');
 Route::resource('genders', 'GenreController', ['only' => ['index','create']]);
 
 Route::group(['prefix' => 'api'], function()
