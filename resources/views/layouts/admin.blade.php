@@ -16,12 +16,14 @@
     
     {!!Html::script('js/jquery.min.js')!!}
     {!!Html::script('js/angular/angular.js')!!}
+    {!!Html::script('js/angular/constants.js')!!}
     {!!Html::script('js/angular/controllers/GenderController.js')!!}
     {!!Html::script('js/angular/factories/GenderFactory.js')!!}
     {!!Html::script('js/angular/app.js')!!}
+
 </head>
 
-<body ng-app="appGender">
+<body ng-app="appModule">
 
     <div id="wrapper">
     @include('alerts.alert')        
@@ -100,9 +102,9 @@
 
      </nav>
 
-        <div id="page-wrapper">
+       
             @yield('content')
-        </div>
+     
 
     </div>
     

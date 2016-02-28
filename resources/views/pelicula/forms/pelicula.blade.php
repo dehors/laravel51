@@ -19,6 +19,8 @@
 	{!!Form::file('path')!!}
 </div>
 <div class="form-group">
-	{!!Form::label('Genero','Genero:')!!}
-	{!!Form::select('genders_id',$genres)!!}
+	{!!Form::label('Genero','Genero:')!!}	
+	<select name="genders_id" ng-model="movieData.genders_id">
+	       <option ng-repeat="genders in getGenders" value="@{{ genders.id }}">@{{ genders.genre }}</option>
+	</select>
 </div>

@@ -25,5 +25,6 @@ Route::resource('genders', 'GenreController', ['only' => ['index','create']]);
 
 Route::group(['prefix' => 'api'], function()
 {
-    Route::resource('genders', 'GenreController', ['only' => ['store']]);    
+    Route::resource('genders', 'GenreController', ['only' => ['store']]);
+    Route::get('genders', 'MovieController@gender');    
 });

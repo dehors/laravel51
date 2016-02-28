@@ -21,6 +21,12 @@ class MovieController extends Controller
       return view('pelicula.index',compact('movies'));
     }
 
+    public function gender()
+    {
+         $genres = Gender::get();
+         return response($genres,200); 
+    }
+
     /**
      * Show the form for creating a new resource.
      *

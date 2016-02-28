@@ -1,7 +1,9 @@
 @extends('layouts.admin')
 	@section('content')		
-		  	{!!Form::open(['route'=>'pelicula.store', 'method'=>'POST','files' => true])!!}
-		  		@include('pelicula.forms.pelicula')
-				{!!Form::submit('Registrar',['class'=>'btn btn-primary'])!!}
-			{!!Form::close()!!}
+	<div id="page-wrapper" ng-controller="Movie">
+		  	<form ng-submit="submitmovie()">
+		  		@include('pelicula.forms.pelicula')				
+				<button class="btn btn-primary" type="submit">Submit</button>
+	        </form>
+	</div>
 	@endsection
