@@ -18,6 +18,14 @@ angular.module("Factory",[])
     return {    
         get : function() {
             return $http.get(Constants.URL_API+'/api/genders');
-        }        
+        },
+        save : function(movieData) {
+            return $http({
+                method: 'POST',
+                url: Constants.URL_API+'/api/movies',
+                headers: { 'Content-Type' : 'application/x-www-form-urlencoded' },
+                data: $.param(movieData)
+            });
+        }       
     }
 });

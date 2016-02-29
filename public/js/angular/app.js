@@ -1,2 +1,2 @@
-var appModule = angular.module('appModule',['Constant','Controller', 'Factory']); 
+var appModule = angular.module('appModule',['Constant','Controller', 'Factory','ngFileUpload']); 
 

@@ -1,26 +1,31 @@
 <div class="form-group">
 	{!!Form::label('nombre','Nombre:')!!}
-	{!!Form::text('name',null,['class'=>'form-control', 'placeholder'=>'Ingresa el Nombre de la pelicula'])!!}
+	<input type="text" class="form-control" placeholder="Ingresa el Nombre de la pelicula" ng-model="movieData.name">
 </div>
 <div class="form-group">
 	{!!Form::label('Elenco','Elenco:')!!}
-	{!!Form::text('cast',null,['class'=>'form-control', 'placeholder'=>'Ingresa el elenco'])!!}
+	<input type="text" class="form-control" placeholder="Ingresa el elenco" ng-model="movieData.cast">	
 </div>
 <div class="form-group">
 	{!!Form::label('Direccion','Dirección:')!!}
-	{!!Form::text('direction',null,['class'=>'form-control', 'placeholder'=>'Ingresa al director'])!!}
+	<input type="text" class="form-control" placeholder="Ingresa al director" ng-model="movieData.direction">	
 </div>
 <div class="form-group">
 	{!!Form::label('Duracion','Duración:')!!}
-	{!!Form::text('duration',null,['class'=>'form-control', 'placeholder'=>'Ingresa la duración'])!!}
+	<input type="text" class="form-control" placeholder="Ingresa la duración" ng-model="movieData.duration">
 </div>
-<div class="form-group">
-	{!!Form::label('Poster','Poster:')!!}
-	{!!Form::file('path')!!}
+<div class="form-group">	
+	      
+      <br>Photo:
+      <input type="file" ngf-select ng-model="movieData.path" name="file"    
+             accept="image/*">  
+      <img ngf-thumbnail="movieData.path" class="thumb">
+
 </div>
 <div class="form-group">
 	{!!Form::label('Genero','Genero:')!!}	
 	<select name="genders_id" ng-model="movieData.genders_id">
-	       <option ng-repeat="genders in getGenders" value="@{{ genders.id }}">@{{ genders.genre }}</option>
+			<option value="">---Please select---</option>
+	        <option ng-repeat="genders in getGenders" value="@{{ genders.id }}">@{{ genders.genre }}</option>
 	</select>
 </div>

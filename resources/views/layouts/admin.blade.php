@@ -13,13 +13,23 @@
     {!!Html::style('css/sb-admin-2.css')!!}
     {!!Html::style('css/font-awesome.min.css')!!}
     
-    
+    <style type="text/css">
+        .thumb {
+    width: 50px;
+    height: 50px;
+    float: none;
+    position: relative;
+    top: 7px;
+}
+    </style>
     {!!Html::script('js/jquery.min.js')!!}
     {!!Html::script('js/angular/angular.js')!!}
     {!!Html::script('js/angular/constants.js')!!}
     {!!Html::script('js/angular/controllers/GenderController.js')!!}
     {!!Html::script('js/angular/factories/GenderFactory.js')!!}
-    {!!Html::script('js/angular/app.js')!!}
+    {!!Html::script('js/angular/app.js')!!}    
+    {!!Html::script('node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js')!!}
+    {!!Html::script('node_modules/ng-file-upload/dist/ng-file-upload.min.js')!!}
 
 </head>
 

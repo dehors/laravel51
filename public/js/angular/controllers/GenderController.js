@@ -22,22 +22,26 @@ angular.module("Controller",[])
 	});
 
 })
-.controller("Movie", function($scope, movie){
+.controller("Movie", function($scope, movie, Upload){
 
+	
 	angular.extend($scope, {
 		movieData: {},	
 		getGenders: [],	
 		errorMessages: []
 	});
-	 
+
 	movie.get()
 		.success(function(data) {
 	    	$scope.getGenders = data;
-	        console.log($scope.getGender);           
+	        console.log($scope.getGenders);           
 	     });
-	angular.extend($scope, {
-		submitmovie: function() {	
-			console.log($scope.movieData);
-		}
-	});
+
+	$scope.uploadPic = function(file) {
+	    file.upload = Upload.upload({
+	      url: 'http://localhost/laravel51/public/api/movies',
+	      data: $scope.movieData,
+	    });
+	};
+
 });

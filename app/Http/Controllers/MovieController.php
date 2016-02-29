@@ -46,8 +46,13 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-        Movie::create($request->all());
-        return "Listo";
+        
+        try {
+            Movie::create($request->all());
+        } catch (Exception $e) {
+            return response(500); 
+        }
+        return response('true',201);   
     }
 
     /**
