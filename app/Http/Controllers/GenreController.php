@@ -75,8 +75,8 @@ class GenreController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        return view('genders.edit');
+    {   $gender = Gender::find($id);
+        return view('genders.edit')->with('gender', $gender);
     }
 
     /**
@@ -88,7 +88,14 @@ class GenreController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $gender = Gender::find($id);
+        try {
+           $gender->genre =  $request->input('genre');
+           $gender->save(); 
+        } catch (Exception $e) {
+            return response(500);
+        }
+            return response(200);
     }
 
     /**

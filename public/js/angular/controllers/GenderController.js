@@ -4,13 +4,24 @@ angular.module("Controller",[])
 	
 	angular.extend($scope, {
 		genderData: {},
-		errorMessages: []
+		errorMessages: []		
 	});
 
 	angular.extend($scope, {
 		submitgender: function() {
 	
 		gender.save($scope.genderData)
+			.success(function(data) {
+
+			})
+			.error(function(data) {
+				$scope.errorMessages = data;	
+				console.log($scope.errorMessages);			
+			});
+		},
+		updategender: function(id) {
+		
+		gender.update(id,$scope.genderData)
 			.success(function(data) {
 
 			})

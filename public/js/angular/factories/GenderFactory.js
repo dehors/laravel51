@@ -10,6 +10,14 @@ angular.module("Factory",[])
                 headers: { 'Content-Type' : 'application/x-www-form-urlencoded' },
                 data: $.param(genderData)
             });
+        },
+        update : function(id,genderData) {
+            return $http({
+                method: 'PUT',
+                url: Constants.URL_API+'/api/genders/'+id,
+                headers: { 'Content-Type' : 'application/x-www-form-urlencoded' },
+                data: $.param(genderData)
+            });
         }
 	}
 
