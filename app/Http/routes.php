@@ -29,3 +29,6 @@ Route::group(['prefix' => 'api'], function()
     Route::get('genders', 'MovieController@gender'); 
     Route::resource('movies', 'MovieController', ['only' => ['store']]);   
 });
+
+	
+Route::get('pdf', 'PdfController@invoice');
